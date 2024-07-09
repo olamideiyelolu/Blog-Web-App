@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <title>Bloggers</title>
+</head>
+<body>
+    <main class="container">
+        <!-- Navigation Bar with bootstrap components -->
+        <div class="container">
+            <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="/blogs" class="nav-link">Blogs</a></li>
+            
+            </ul>
+            </header>
+        </div>
+    <!-- This form is to give the User access to alter solely the Blog-Content -->
+    <form action="/update" method="POST">
+        <div class="form-group container">
+            <!-- The Title is set to readonly to restrict the Update functionality to solely Update and not Create -->
+            <input type="text" class="form-control mb-3" value="<%= title %>" name="title" readonly>
+        </div>
+        <div class="form-group container">
+            <!-- Textarea with existing content available for any form of edit -->
+            <textarea class="form-control mb-3" rows="5" name="blog" placeholder="Enter your Blog here"><%= content %></textarea>
+        </div>
+        <div class="form-group container text-center">
+            <!-- Button to save changes -->
+            <button type="submit" class="btn btn-primary" >Save</button>
+        </div>    
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

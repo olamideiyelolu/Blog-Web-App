@@ -1,0 +1,38 @@
+.input-element{
+    height:100px;
+    width: 400px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home{
+  /* Apply a cool gradient background */
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  /* Smoothly animate any background changes */
+  transition: background-color 0.5s ease;
+  
+  /* Font setup for readability and aesthetics */
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  
+  /* Ensuring the content uses the full height */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+p {
+  font-size: 1.2rem;
+  
+}
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <title>Bloggers</title>
+</head>
+
+<body>
+    <div class="home">
+    <main class="container">
+        <!-- Navigation Bar with bootstrap components -->
+        <div class="container">
+            <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="/blogs" class="nav-link">Blogs</a></li>
+            
+            </ul>
+            </header>
+        </div>
+        <div class="px-4 py-5 my-3 col-lg-6 mx-auto " width="20">
+        <!-- WEB Title -->
+        <h1 class="display-5 fw-bold text-body-emphasis">WELCOME TO BLOGGERS & ENTER A BLOG BELOW</h1>
+        </div>
+    <div class="container">
+        <!-- Form to tak in User's Blog Input -->
+        <form action="/submit" method="POST" id="blogForm">
+            <div class="form-group container">
+                <!-- Title Input -->
+                <input type="text" class="form-control mb-3 titles" placeholder="Enter Title here" name="title" id="title">
+            </div>
+            <div class="form-group container">
+                <!-- Content Input -->
+                <textarea class="form-control mb-3" rows="5" name="blog" placeholder="Enter your Blog here" id="myTextarea"></textarea>
+                <div id="charCount" class="text-center">0 / 600 characters</div>
+            </div>
+            <div class="form-group container text-center">
+                <!-- Button To submit Blog -->
+                <button type="submit" class="btn btn-primary" >POST</button>
+            </div>    
+        </form>
+    </div>
+
+    <!-- Receives info from the backend to alert the User if the Blog Title is already in USE -->
+    <% if(locals.next){%>
+        <script>
+            alert("Blog-Title already in Use")
+        </script>
+    <%} %>
+    <!-- Receives info from the backend to alert the User if a Blog-Title is not entered on Blog submission-->
+    <% if(locals.message){%>
+        <script>
+            alert("Please enter a Blog/Blog-Title")
+        </script>
+    <%} %>
+
+    
+    <!-- JavaScript to process character count -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.getElementById('myTextarea');
+            const charCount = document.getElementById('charCount');
+            const maxLength = 600;
+        
+            textarea.addEventListener('input', function(event) {
+                const currentLength = textarea.value.length;
+                if (currentLength > maxLength) {
+                    // Prevent value from changing
+                    event.preventDefault();
+                    // Optional: reset value to last acceptable input
+                    textarea.value = textarea.value.substring(0, maxLength);
+                }
+                // Update the character count display
+                charCount.textContent = `${textarea.value.length} / ${maxLength} characters`;
+            });
+        
+            // Additional handling for keydown to prevent further characters from being typed
+            textarea.addEventListener('keydown', function(event) {
+                const currentLength = textarea.value.length;
+                // Allow navigation keys: backspace, delete, arrows
+                if (currentLength >= maxLength && !['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+    </div>
+</body>    
+    
